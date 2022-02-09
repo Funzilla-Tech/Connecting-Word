@@ -51,6 +51,7 @@ public class ItemController : MonoBehaviour
         CurrentLevelIndex = 0;
         MainCanvas = GameObject.FindWithTag("MainCanvas");
         levelLabel.text = $"LEVEL : {(CurrentLevelIndex + 1)}";
+        LoadLevel();
     }
 
     private void Update()

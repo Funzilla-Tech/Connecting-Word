@@ -8,6 +8,7 @@ TagManager:
   - ItemController
   - WinCanvas
   - GameOverCanvas
+  - hand
   layers:
   - Default
   - TransparentFX
