@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class ItemController : MonoBehaviour
 {
+    [SerializeField] private ParticleSystem confety;
     [SerializeField]private Dictionary<int, GameObject> ItemList = new Dictionary<int, GameObject>();
     
     private Canvas WinCanvas;
@@ -98,6 +99,7 @@ public class ItemController : MonoBehaviour
     private void SetWinGame()
     {
         WinCanvas.enabled = true;
+        confety.Play();
         StartCoroutine(WinCanvasAnim());
         
     }
