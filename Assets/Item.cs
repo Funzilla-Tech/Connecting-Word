@@ -68,12 +68,12 @@ public class Item : MonoBehaviour
     {
         if (isInLink || isSelected||isIntouch)
         {
-            border.SetActive(true);
-            transform.localScale = scaleWhenSelected;
+           border.SetActive(true);
+           transform.localScale = scaleWhenSelected;
         }
         else
         {
-            transform.localScale = new Vector3(1, 1, 1);
+            //transform.localScale = new Vector3(1, 1, 1);
             border.SetActive(false);
         }
         DrawLine();
@@ -215,8 +215,8 @@ public class Item : MonoBehaviour
     {
         
         SetCurrsor();
-        Debug.Log("poiter enter");
         isSelected = true;
+        
     }
 
     public void OnPoiterExit()
