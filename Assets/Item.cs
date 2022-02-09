@@ -88,7 +88,7 @@ public class Item : MonoBehaviour
     public void BeginDrag()
     {
         SetCurrsor();
-        StartCoroutine(SelectEnterAnim());
+       // StartCoroutine(SelectEnterAnim());
         
         _lineRenderer.enabled = true;
         if (!isIntouch)
@@ -315,7 +315,7 @@ public class Item : MonoBehaviour
     {
        var xspot = curssor.width/2;
        var yspot = 0;
-        Vector2 hotSpot = new Vector2(xspot,yspot);
+       Vector2 hotSpot = new Vector2(xspot,yspot);
         Cursor.SetCursor(curssor,new Vector2(xspot,yspot),CursorMode.ForceSoftware);
     }
 }
