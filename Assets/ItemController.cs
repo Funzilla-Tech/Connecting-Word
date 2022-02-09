@@ -7,6 +7,7 @@ using UnityEngine;
 public class ItemController : MonoBehaviour
 {
     [SerializeField]private Dictionary<int, GameObject> ItemList = new Dictionary<int, GameObject>();
+    
     private Canvas WinCanvas;
     private Canvas GameoverCanvas;
     private const int LevelCount = 6;
@@ -43,6 +44,7 @@ public class ItemController : MonoBehaviour
 
     private void Awake()
     {
+        
         state = GameState.PAYING;
         WinCanvas = GameObject.FindWithTag("WinCanvas").GetComponent<Canvas>();
         GameoverCanvas = GameObject.FindWithTag("GameOverCanvas").GetComponent<Canvas>();

@@ -5,9 +5,11 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UIElements;
 using Button = UnityEngine.UI.Button;
+using Cursor = UnityEngine.Cursor;
 
 public class Item : MonoBehaviour
 {
+    [SerializeField] private Texture2D curssor;
     [SerializeField] private Item MatchItem;
     public ItemType _itemType;
     [SerializeField] private Button btn;
@@ -23,7 +25,7 @@ public class Item : MonoBehaviour
     public bool isInLink;
     public Item head;
     public Item tail;
-
+    private GameObject hand;
     public enum ItemType
     {
         ICON,
@@ -33,6 +35,7 @@ public class Item : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
+        hand = GameObject.FindWithTag("hand");
         parentCanvas = GameObject.FindWithTag("MainCanvas").GetComponent<Canvas>();
         _lineRenderer = GetComponentInChildren<LineRenderer>();
         eventTrigger = GetComponentInChildren<EventTrigger>();
@@ -81,11 +84,17 @@ public class Item : MonoBehaviour
     
     public void BeginDrag()
     {
+        SetCurrsor();
         StartCoroutine(SelectEnterAnim());
+        
         _lineRenderer.enabled = true;
         if (!isIntouch)
         {
-            startPositonTouch = GetMousePosition();
+            
+                startPositonTouch = GetMousePosition();
+               //
+               // hand.transform.position = GetMousePosition();
+                
             _lineRenderer.positionCount = 2;
             isIntouch = true;
         }
@@ -96,12 +105,31 @@ public class Item : MonoBehaviour
                     
     public void Drag()
     {
+        SetCurrsor();
         if (tail != null)
         {
+            foreach (var item in _itemController.GetItemList())
+            {
+                var _item = item.Value.GetComponent<Item>();
+                if (_item.IsSlected())
+                {
+                    if (tail._itemType != _item._itemType && !_item.isInLink)
+                    {
+                        tail.tail = _item;
+                        _item.head = tail;
+                        _item.isInLink = true;
+                        isInLink = true;
+                        tail.BeginDrag();
+                        tail.EndDrag();
+                        return;
+                    }
+                }
+            }
             return;
         }
         currentPositionTouch = GetMousePosition();
-       // Debug.Log("Draging");
+       // hand.transform.position = GetMousePosition();
+        //Debug.Log("Draging");
        foreach (var item in _itemController.GetItemList())
        {
            var _item = item.Value.GetComponent<Item>();
@@ -128,6 +156,7 @@ public class Item : MonoBehaviour
     }
     public void EndDrag()
     {
+        SetCurrsor();
         if (tail != null)
         {
             isIntouch = false;
@@ -181,6 +210,8 @@ public class Item : MonoBehaviour
 
     public void OnPointerEnter()
     {
+        
+        SetCurrsor();
         Debug.Log("poiter enter");
         isSelected = true;
     }
@@ -275,5 +306,13 @@ public class Item : MonoBehaviour
             transform.localScale = new Vector3(temp, temp, 1);
             yield return new WaitForEndOfFrame();
         }
+    }
+
+    private void SetCurrsor()
+    {
+       var xspot = curssor.width/2;
+       var yspot = 0;
+        Vector2 hotSpot = new Vector2(xspot,yspot);
+        Cursor.SetCursor(curssor,new Vector2(xspot,yspot),CursorMode.ForceSoftware);
     }
 }
