@@ -81,7 +81,7 @@ public class Item : MonoBehaviour
     
     public void BeginDrag()
     {
-        
+        StartCoroutine(SelectEnterAnim());
         _lineRenderer.enabled = true;
         if (!isIntouch)
         {
@@ -231,5 +231,49 @@ public class Item : MonoBehaviour
             tail.DisableLineRenderer();
         }  
         tail = null;
+    }
+
+    public bool CheckValid()
+    {
+        if (tail == null) return true;
+        if (tail != MatchItem)
+        {
+            _lineRenderer.material.color = Color.red;
+            return false;
+        }
+        return true;
+    }
+
+    public void Reset()
+    {
+        head = null;
+        tail = null;
+        _lineRenderer.enabled = false;
+        _lineRenderer.material.color = Color.green;
+        isSelected = false;
+        isIntouch = false;
+        isInLink = false;
+        
+    }
+
+    private void OnDestroy()
+    {
+        _itemController.RemoveItem(GetInstanceID());
+    }
+
+    IEnumerator SelectEnterAnim()
+    {
+        for (int i = 0; i < 10; i++)
+        {
+            var temp = 1f + 0.2f/ (100 - i);
+            transform.localScale = new Vector3(temp, temp, 1);
+            yield return new WaitForEndOfFrame();
+        }
+        for (int i = 0; i < 10; i++)
+        {
+            var temp = 1.2f -  0.2f / (100 - i);
+            transform.localScale = new Vector3(temp, temp, 1);
+            yield return new WaitForEndOfFrame();
+        }
     }
 }
