@@ -180,7 +180,19 @@ public class ItemController : MonoBehaviour
     
     public void LoadNewLevel()
     {
-        GameObject g = Resources.Load<GameObject>(CurrentLevelIndex <= LevelCount - 1 ? levelPath[++CurrentLevelIndex] : levelPath[(CurrentLevelIndex = 0)]);
+        CurrentLevelIndex = CurrentLevelIndex < (LevelCount - 1) ? (CurrentLevelIndex + 1 ) : 0;
+        LoadLevel();
+    }
+
+    public void LoadBackLevel()
+    {
+        CurrentLevelIndex = CurrentLevelIndex > 0 ? (CurrentLevelIndex - 1 ) : (LevelCount-1);
+        LoadLevel();
+    }
+
+    private void LoadLevel()
+    {
+        GameObject g = Resources.Load<GameObject>(levelPath[CurrentLevelIndex]);
         foreach (var item in ItemList)
         {
             var _item = item.Value.GetComponent<Item>();
@@ -204,6 +216,5 @@ public class ItemController : MonoBehaviour
         }
         ChangeState(GameState.PAYING);
     }
-
     private string[] levelPath = new string[] {"Level1","Level2","Level3","Level4","Level5","Level6"};
 }
