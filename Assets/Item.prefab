@@ -194,6 +194,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9b7422bb351ada408127531b163ab88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scaleWhenSelected: {x: 0.8, y: 0.8, z: 1}
   curssor: {fileID: 2800000, guid: 66e4ca2777d03be45b9359e79e65df3c, type: 3}
   MatchItem: {fileID: 0}
   _itemType: 0

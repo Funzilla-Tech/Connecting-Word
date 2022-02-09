@@ -9,6 +9,7 @@ using Cursor = UnityEngine.Cursor;
 
 public class Item : MonoBehaviour
 {
+    [SerializeField] private Vector3 scaleWhenSelected;
     [SerializeField] private Texture2D curssor;
     [SerializeField] private Item MatchItem;
     public ItemType _itemType;
@@ -68,9 +69,11 @@ public class Item : MonoBehaviour
         if (isInLink || isSelected||isIntouch)
         {
             border.SetActive(true);
+            transform.localScale = scaleWhenSelected;
         }
         else
         {
+            transform.localScale = new Vector3(1, 1, 1);
             border.SetActive(false);
         }
         DrawLine();
