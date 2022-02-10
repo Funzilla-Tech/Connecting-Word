@@ -73,7 +73,7 @@ public class Item : MonoBehaviour
         }
         else
         {
-            //transform.localScale = new Vector3(1, 1, 1);
+            transform.localScale = new Vector3(1, 1, 1);
             border.SetActive(false);
         }
         DrawLine();
@@ -184,7 +184,7 @@ public class Item : MonoBehaviour
         }
         return false;
     }
-    Vector3 GetMousePosition() {
+   Vector3 GetMousePosition() {
         Vector2 movePos;
         RectTransformUtility.ScreenPointToLocalPointInRectangle(
             parentCanvas.transform as RectTransform,
@@ -313,9 +313,9 @@ public class Item : MonoBehaviour
 
     private void SetCurrsor()
     {
-       var xspot = curssor.width/2;
+       /*var xspot = curssor.width/2;
        var yspot = 0;
        Vector2 hotSpot = new Vector2(xspot,yspot);
-        Cursor.SetCursor(curssor,new Vector2(xspot,yspot),CursorMode.ForceSoftware);
+        Cursor.SetCursor(curssor,new Vector2(xspot,yspot),CursorMode.ForceSoftware);*/
     }
 }
