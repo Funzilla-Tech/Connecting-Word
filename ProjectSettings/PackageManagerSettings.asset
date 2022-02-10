@@ -28,7 +28,15 @@ MonoBehaviour:
     m_Name: Funzilla Package Registry
     m_Url: http://34.72.115.139:4873
     m_Scopes:
+    - com.google
     - com.funzilla
+    m_IsDefault: 0
+    m_Capabilities: 0
+  - m_Id: scoped:package.openupm.com
+    m_Name: package.openupm.com
+    m_Url: https://package.openupm.com
+    m_Scopes:
+    - com.gameanalytics.sdk
     m_IsDefault: 0
     m_Capabilities: 0
   m_UserSelectedRegistryName: 
@@ -40,6 +48,7 @@ MonoBehaviour:
       m_Name: Funzilla Package Registry
       m_Url: http://34.72.115.139:4873
       m_Scopes:
+      - com.google
       - com.funzilla
       m_IsDefault: 0
       m_Capabilities: 0
@@ -47,5 +56,6 @@ MonoBehaviour:
     m_Name: Funzilla Package Registry
     m_Url: http://34.72.115.139:4873
     m_Scopes:
+    - com.google
     - com.funzilla
     m_SelectedScopeIndex: 0

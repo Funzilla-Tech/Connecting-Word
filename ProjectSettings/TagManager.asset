@@ -4,25 +4,21 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - MainCanvas
-  - ItemController
-  - WinCanvas
-  - GameOverCanvas
-  - hand
+  - Wall
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Gameplay
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Trap
+  - Sensor
+  - Tablet
+  - Character
+  - Road
+  - TabletPhysics
+  - DeadTablet
   - 
   - 
   - 
@@ -43,6 +39,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Gate
+    uniqueID: 1692338621
+    locked: 0
+  - name: 3D Text
+    uniqueID: 1633245555
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

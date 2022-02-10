@@ -26,7 +26,7 @@ public class Item : MonoBehaviour
     public bool isInLink;
     public Item head;
     public Item tail;
-    private GameObject hand;
+   // private GameObject hand;
     public enum ItemType
     {
         ICON,
@@ -36,7 +36,7 @@ public class Item : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
-        hand = GameObject.FindWithTag("hand");
+       // hand = GameObject.FindWithTag("hand");
         parentCanvas = GameObject.FindWithTag("MainCanvas").GetComponent<Canvas>();
         _lineRenderer = GetComponentInChildren<LineRenderer>();
         eventTrigger = GetComponentInChildren<EventTrigger>();

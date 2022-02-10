@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Funzilla/Managers/GameManager.unity
+    guid: 1f6b3809b99cceb4695f04ca30ae51ae
+  - enabled: 1
+    path: Assets/Game/Gameplay/Gameplay.unity
+    guid: 4405d69891110a54ab8e0c046b62f289
   m_configObjects: {}
