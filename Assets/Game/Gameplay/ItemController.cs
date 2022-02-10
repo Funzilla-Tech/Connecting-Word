@@ -3,6 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Analytics;
+using Funzilla;
+using Analytics = Funzilla.Analytics;
 
 public class ItemController : MonoBehaviour
 {
@@ -79,29 +82,33 @@ public class ItemController : MonoBehaviour
         for (int i = 0; i < 100; i+=2)
         {
             GameoverCanvas.gameObject.transform.localScale = new Vector3(i/100f,i/100f,1);
-            yield return new WaitForSeconds(0.0001f*Time.deltaTime);
+            yield return new WaitForSeconds(0.00001f*Time.deltaTime);
         }
         
     }
     IEnumerator WinCanvasAnim()
     {
-        for (int i = 0; i < 100; i+=2)
+        float a = 0;
+        while (a < 100)
         {
-            WinCanvas.gameObject.transform.localScale = new Vector3(i/100f,i/100f,1);
-            yield return new WaitForSeconds(0.0001f*Time.deltaTime);
+            WinCanvas.gameObject.transform.localScale = new Vector3(a/100f,a/100f,1);
+            a += 100 * Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+            
         }
+       
         
     }
     private void GameOver()
     {
-        
+        Analytics.Instance.LogEvent($"level_{CurrentLevelIndex + 1}_fail");
     }
     private void SetWinGame()
     {
         WinCanvas.enabled = true;
         confety.Play();
         StartCoroutine(WinCanvasAnim());
-        
+        Analytics.Instance.LogEvent($"level_{CurrentLevelIndex + 1}_complete");
     }
     private void GamePlaying()
     {
@@ -198,6 +205,7 @@ public class ItemController : MonoBehaviour
 
     private void LoadLevel()
     {
+        Analytics.Instance.LogEvent($"level_{CurrentLevelIndex + 1}_start");
         GameObject g = Resources.Load<GameObject>(levelPath[CurrentLevelIndex]);
         foreach (var item in ItemList)
         {

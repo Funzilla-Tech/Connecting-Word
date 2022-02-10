@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using GameAnalyticsSDK.Setup;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UIElements;
@@ -17,6 +18,7 @@ public class Item : MonoBehaviour
     [SerializeField] private LineRenderer _lineRenderer;
     [SerializeField] private GameObject border;
     private EventTrigger eventTrigger;
+    private bool temp_isSelected;
     private Vector2 startPositonTouch;
     private Vector2 currentPositionTouch;
     private bool isIntouch = false;
@@ -26,6 +28,8 @@ public class Item : MonoBehaviour
     public bool isInLink;
     public Item head;
     public Item tail;
+
+    private AudioSource _audioSource;
    // private GameObject hand;
     public enum ItemType
     {
@@ -36,6 +40,8 @@ public class Item : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
+        _audioSource = GameObject.FindWithTag("SoundFx").GetComponent<AudioSource>();
+        temp_isSelected = isSelected;
        // hand = GameObject.FindWithTag("hand");
         parentCanvas = GameObject.FindWithTag("MainCanvas").GetComponent<Canvas>();
         _lineRenderer = GetComponentInChildren<LineRenderer>();
@@ -68,7 +74,12 @@ public class Item : MonoBehaviour
     {
         if (isInLink || isSelected||isIntouch)
         {
-           border.SetActive(true);
+            if (isSelected&&!temp_isSelected)
+            {
+               PlaySoundFx();
+               temp_isSelected = isSelected;
+            }
+            border.SetActive(true);
            //transform.localScale = scaleWhenSelected;
         }
         else
@@ -317,5 +328,10 @@ public class Item : MonoBehaviour
        var yspot = 0;
        Vector2 hotSpot = new Vector2(xspot,yspot);
         Cursor.SetCursor(curssor,new Vector2(xspot,yspot),CursorMode.ForceSoftware);*/
+    }
+
+    private void PlaySoundFx()
+    {
+        _audioSource.Play();
     }
 }
