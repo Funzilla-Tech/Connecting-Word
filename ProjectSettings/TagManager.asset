@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - Wall
+  - ItemController
+  - MainCanvas
+  - GameOverCanvas
+  - WinCanvas
+  - SoundFx
   layers:
   - Default
   - TransparentFX

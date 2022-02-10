@@ -73,18 +73,21 @@ public class ItemController : MonoBehaviour
 
     private void SetGameOver()
     {
+        SoundManager.Instance.PlaySfx("Fail");
+        Analytics.Instance.LogEvent($"level_{CurrentLevelIndex + 1}_fail");
         GameoverCanvas.enabled = true;
         StartCoroutine(GameOverCanvasAnim());
     }
 
     IEnumerator GameOverCanvasAnim()
     {
-        for (int i = 0; i < 100; i+=2)
+        float a = 0;
+        while (a < 100)
         {
-            GameoverCanvas.gameObject.transform.localScale = new Vector3(i/100f,i/100f,1);
-            yield return new WaitForSeconds(0.00001f*Time.deltaTime);
+            GameoverCanvas.gameObject.transform.localScale = new Vector3(a/100f,a/100f,1);
+            a += 1000 * Time.deltaTime;
+            yield return new WaitForEndOfFrame();
         }
-        
     }
     IEnumerator WinCanvasAnim()
     {
@@ -101,7 +104,7 @@ public class ItemController : MonoBehaviour
     }
     private void GameOver()
     {
-        Analytics.Instance.LogEvent($"level_{CurrentLevelIndex + 1}_fail");
+       // Analytics.Instance.LogEvent($"level_{CurrentLevelIndex + 1}_fail");
     }
     private void SetWinGame()
     {

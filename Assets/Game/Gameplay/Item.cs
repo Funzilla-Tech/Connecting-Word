@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Funzilla;
 using GameAnalyticsSDK.Setup;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -40,7 +41,7 @@ public class Item : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
-        _audioSource = GameObject.FindWithTag("SoundFx").GetComponent<AudioSource>();
+       
         temp_isSelected = isSelected;
        // hand = GameObject.FindWithTag("hand");
         parentCanvas = GameObject.FindWithTag("MainCanvas").GetComponent<Canvas>();
@@ -332,6 +333,6 @@ public class Item : MonoBehaviour
 
     private void PlaySoundFx()
     {
-        _audioSource.Play();
+        SoundManager.Instance.PlaySfx("");
     }
 }
