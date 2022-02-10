@@ -15,8 +15,8 @@ public class Cursor_custom : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = GetMousePosition();
-      //  transform.position = new Vector3(transform.position.x, transform.position.y, -11);
+        transform.position = GetMousePosition(); 
+        transform.position = new Vector3(transform.position.x, transform.position.y, -5);
     }
     internal Vector3 GetMousePosition() {
         Vector2 movePos;
