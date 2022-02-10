@@ -85,7 +85,7 @@ public class ItemController : MonoBehaviour
         while (a < 100)
         {
             GameoverCanvas.gameObject.transform.localScale = new Vector3(a/100f,a/100f,1);
-            a += 1000 * Time.deltaTime;
+            a += 500 * Time.deltaTime;
             yield return new WaitForEndOfFrame();
         }
     }
