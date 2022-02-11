@@ -88,7 +88,7 @@ public class ItemController : MonoBehaviour
         for (int i = 0; i < 100; i+=2)
         {
             WinCanvas.gameObject.transform.localScale = new Vector3(i/100f,i/100f,1);
-            yield return new WaitForSeconds(0.0001f*Time.deltaTime);
+            yield return new WaitForSeconds(0.1f*Time.deltaTime);
         }
         
     }
