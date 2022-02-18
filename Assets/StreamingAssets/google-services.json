@@ -1,34 +1,33 @@
 {
   "project_info": {
-    "project_number": "303588209155",
-    "firebase_url": "https://count-surfer-default-rtdb.firebaseio.com",
-    "project_id": "count-surfer",
-    "storage_bucket": "count-surfer.appspot.com"
+    "project_number": "186581605020",
+    "project_id": "connecting-words",
+    "storage_bucket": "connecting-words.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:303588209155:android:b3e309bd17a99bc04f5436",
+        "mobilesdk_app_id": "1:186581605020:android:9ae78b7a75f228be53ab59",
         "android_client_info": {
-          "package_name": "com.funzilla.count.surfer"
+          "package_name": "com.funzilla.word.connect"
         }
       },
       "oauth_client": [
         {
-          "client_id": "303588209155-a86hv6q8m8520u8mlb02j3lgrcev5i6v.apps.googleusercontent.com",
+          "client_id": "186581605020-ae5mc9k7a21g4kcvoe7qmtjhlf64v2np.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyD9rg0_5fsL9bOVQDsJaX6CeiLvMnSqGDY"
+          "current_key": "AIzaSyBXOGP2wAWJbZ6RlKap8t2LQ-7ZWyu3NYc"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "303588209155-a86hv6q8m8520u8mlb02j3lgrcev5i6v.apps.googleusercontent.com",
+              "client_id": "186581605020-ae5mc9k7a21g4kcvoe7qmtjhlf64v2np.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
